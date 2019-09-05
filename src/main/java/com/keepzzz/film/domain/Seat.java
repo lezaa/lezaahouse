@@ -5,45 +5,41 @@ package com.keepzzz.film.domain;
  */
 public class Seat {
 
-  private long id;
-  private long hallId;
-  private long row;
-  private long num;
+  private Long id;
+  private Long hallId;
+  private Long row;
+  private Long num;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getHallId() {
+  public Long getHallId() {
     return hallId;
   }
 
-  public void setHallId(long hallId) {
+  public void setHallId(Long hallId) {
     this.hallId = hallId;
   }
 
-
-  public long getRow() {
+  public Long getRow() {
     return row;
   }
 
-  public void setRow(long row) {
+  public void setRow(Long row) {
     this.row = row;
   }
 
-
-  public long getNum() {
+  public Long getNum() {
     return num;
   }
 
-  public void setNum(long num) {
+  public void setNum(Long num) {
     this.num = num;
   }
-
 }

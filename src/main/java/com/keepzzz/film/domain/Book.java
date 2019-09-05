@@ -5,45 +5,41 @@ package com.keepzzz.film.domain;
  */
 public class Book {
 
-  private long id;
-  private long filmId;
-  private long fileCount;
-  private double totalPrice;
+  private Long id;
+  private Long filmId;
+  private Long fileCount;
+  private Double totalPrice;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getFilmId() {
+  public Long getFilmId() {
     return filmId;
   }
 
-  public void setFilmId(long filmId) {
+  public void setFilmId(Long filmId) {
     this.filmId = filmId;
   }
 
-
-  public long getFileCount() {
+  public Long getFileCount() {
     return fileCount;
   }
 
-  public void setFileCount(long fileCount) {
+  public void setFileCount(Long fileCount) {
     this.fileCount = fileCount;
   }
 
-
-  public double getTotalPrice() {
+  public Double getTotalPrice() {
     return totalPrice;
   }
 
-  public void setTotalPrice(double totalPrice) {
+  public void setTotalPrice(Double totalPrice) {
     this.totalPrice = totalPrice;
   }
-
 }

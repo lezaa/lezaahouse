@@ -8,41 +8,37 @@ import java.util.Date;
  */
 public class Ticket {
 
-  private long id;
-  private long filmId;
-  private long hallId;
+  private Long id;
+  private Long filmId;
+  private Long hallId;
   private Date createTime;
   private String seatId;
-  private double ticketPrice;
-  private long orderId;
+  private Double ticketPrice;
+  private Long orderId;
 
-
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getFilmId() {
+  public Long getFilmId() {
     return filmId;
   }
 
-  public void setFilmId(long filmId) {
+  public void setFilmId(Long filmId) {
     this.filmId = filmId;
   }
 
-
-  public long getHallId() {
+  public Long getHallId() {
     return hallId;
   }
 
-  public void setHallId(long hallId) {
+  public void setHallId(Long hallId) {
     this.hallId = hallId;
   }
-
 
   public Date getCreateTime() {
     return createTime;
@@ -52,7 +48,6 @@ public class Ticket {
     this.createTime = createTime;
   }
 
-
   public String getSeatId() {
     return seatId;
   }
@@ -61,22 +56,19 @@ public class Ticket {
     this.seatId = seatId;
   }
 
-
-  public double getTicketPrice() {
+  public Double getTicketPrice() {
     return ticketPrice;
   }
 
-  public void setTicketPrice(double ticketPrice) {
+  public void setTicketPrice(Double ticketPrice) {
     this.ticketPrice = ticketPrice;
   }
 
-
-  public long getOrderId() {
+  public Long getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(long orderId) {
+  public void setOrderId(Long orderId) {
     this.orderId = orderId;
   }
-
 }

@@ -8,39 +8,36 @@ import java.util.Date;
 
 public class Comment {
 
-  private long id;
-  private long userId;
-  private long filmId;
+  private Long id;
+  private Long userId;
+  private Long filmId;
   private Date createTime;
   private String comments;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
-  public long getFilmId() {
+  public Long getFilmId() {
     return filmId;
   }
 
-  public void setFilmId(long filmId) {
+  public void setFilmId(Long filmId) {
     this.filmId = filmId;
   }
-
 
   public Date getCreateTime() {
     return createTime;
@@ -50,7 +47,6 @@ public class Comment {
     this.createTime = createTime;
   }
 
-
   public String getComments() {
     return comments;
   }
@@ -58,5 +54,4 @@ public class Comment {
   public void setComments(String comments) {
     this.comments = comments;
   }
-
 }

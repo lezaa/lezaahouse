@@ -5,19 +5,18 @@ package com.keepzzz.film.domain;
  */
 public class Hall {
 
-  private long id;
+  private Long id;
   private String hallName;
-  private long hallNum;
+  private Long hallNum;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
-
 
   public String getHallName() {
     return hallName;
@@ -27,13 +26,11 @@ public class Hall {
     this.hallName = hallName;
   }
 
-
-  public long getHallNum() {
+  public Long getHallNum() {
     return hallNum;
   }
 
-  public void setHallNum(long hallNum) {
+  public void setHallNum(Long hallNum) {
     this.hallNum = hallNum;
   }
-
 }

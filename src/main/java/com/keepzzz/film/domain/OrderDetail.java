@@ -5,85 +5,76 @@ package com.keepzzz.film.domain;
  */
 public class OrderDetail {
 
-  private long id;
-  private long orderId;
-  private double filmId;
-  private double snackId;
-  private long seatId;
-  private long filmCount;
-  private long snackNum;
-  private double orderPrice;
+  private Long id;
+  private Long orderId;
+  private Double filmId;
+  private Double snackId;
+  private Long seatId;
+  private Long filmCount;
+  private Long snackNum;
+  private Double orderPrice;
 
-
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getOrderId() {
+  public Long getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(long orderId) {
+  public void setOrderId(Long orderId) {
     this.orderId = orderId;
   }
 
-
-  public double getFilmId() {
+  public Double getFilmId() {
     return filmId;
   }
 
-  public void setFilmId(double filmId) {
+  public void setFilmId(Double filmId) {
     this.filmId = filmId;
   }
 
-
-  public double getSnackId() {
+  public Double getSnackId() {
     return snackId;
   }
 
-  public void setSnackId(double snackId) {
+  public void setSnackId(Double snackId) {
     this.snackId = snackId;
   }
 
-
-  public long getSeatId() {
+  public Long getSeatId() {
     return seatId;
   }
 
-  public void setSeatId(long seatId) {
+  public void setSeatId(Long seatId) {
     this.seatId = seatId;
   }
 
-
-  public long getFilmCount() {
+  public Long getFilmCount() {
     return filmCount;
   }
 
-  public void setFilmCount(long filmCount) {
+  public void setFilmCount(Long filmCount) {
     this.filmCount = filmCount;
   }
 
-
-  public long getSnackNum() {
+  public Long getSnackNum() {
     return snackNum;
   }
 
-  public void setSnackNum(long snackNum) {
+  public void setSnackNum(Long snackNum) {
     this.snackNum = snackNum;
   }
 
-
-  public double getOrderPrice() {
+  public Double getOrderPrice() {
     return orderPrice;
   }
 
-  public void setOrderPrice(double orderPrice) {
+  public void setOrderPrice(Double orderPrice) {
     this.orderPrice = orderPrice;
   }
-
 }

@@ -9,47 +9,55 @@ import java.util.Date;
 
 public class Film {
 
-  private long id;
-  private long sortId;
-  private long areaId;
+  private Long id;
+  /**
+   * 所在分类
+   */
+  private Long sortId;
+  /**
+   * 所在地区
+   */
+  private Long areaId;
   private String filmName;
-  private long filmTime;
+  private Long filmTime;
   private String filmDirector;
   private String filmPlayers;
   private String filmIntro;
-  private String flimLanguage;
-  private double filmPrice;
+  private String filmLanguage;
+  private Double filmPrice;
+  /**
+   * 上映时间
+   */
   private Date playTime;
   private String filmPhoto;
-  private long statu;
+  /**
+   * 电影状态 1:正在上映  0:下架  2:即将上映
+   */
+  private Long statu;
 
-
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
-  public long getSortId() {
+  public Long getSortId() {
     return sortId;
   }
 
-  public void setSortId(long sortId) {
+  public void setSortId(Long sortId) {
     this.sortId = sortId;
   }
 
-
-  public long getAreaId() {
+  public Long getAreaId() {
     return areaId;
   }
 
-  public void setAreaId(long areaId) {
+  public void setAreaId(Long areaId) {
     this.areaId = areaId;
   }
-
 
   public String getFilmName() {
     return filmName;
@@ -59,15 +67,13 @@ public class Film {
     this.filmName = filmName;
   }
 
-
-  public long getFilmTime() {
+  public Long getFilmTime() {
     return filmTime;
   }
 
-  public void setFilmTime(long filmTime) {
+  public void setFilmTime(Long filmTime) {
     this.filmTime = filmTime;
   }
-
 
   public String getFilmDirector() {
     return filmDirector;
@@ -77,7 +83,6 @@ public class Film {
     this.filmDirector = filmDirector;
   }
 
-
   public String getFilmPlayers() {
     return filmPlayers;
   }
@@ -85,7 +90,6 @@ public class Film {
   public void setFilmPlayers(String filmPlayers) {
     this.filmPlayers = filmPlayers;
   }
-
 
   public String getFilmIntro() {
     return filmIntro;
@@ -95,24 +99,21 @@ public class Film {
     this.filmIntro = filmIntro;
   }
 
-
-  public String getFlimLanguage() {
-    return flimLanguage;
+  public String getFilmLanguage() {
+    return filmLanguage;
   }
 
-  public void setFlimLanguage(String flimLanguage) {
-    this.flimLanguage = flimLanguage;
+  public void setFilmLanguage(String flimLanguage) {
+    this.filmLanguage = flimLanguage;
   }
 
-
-  public double getFilmPrice() {
+  public Double getFilmPrice() {
     return filmPrice;
   }
 
-  public void setFilmPrice(double filmPrice) {
+  public void setFilmPrice(Double filmPrice) {
     this.filmPrice = filmPrice;
   }
-
 
   public Date getPlayTime() {
     return playTime;
@@ -122,7 +123,6 @@ public class Film {
     this.playTime = playTime;
   }
 
-
   public String getFilmPhoto() {
     return filmPhoto;
   }
@@ -131,13 +131,11 @@ public class Film {
     this.filmPhoto = filmPhoto;
   }
 
-
-  public long getStatu() {
+  public Long getStatu() {
     return statu;
   }
 
-  public void setStatu(long statu) {
+  public void setStatu(Long statu) {
     this.statu = statu;
   }
-
 }

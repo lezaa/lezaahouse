@@ -5,11 +5,11 @@ package com.keepzzz.film.domain;
  */
 public class Area {
 
-  private long id;
+  private Long id;
   private String zone;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 

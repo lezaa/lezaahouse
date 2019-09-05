@@ -5,20 +5,20 @@ package com.keepzzz.film.domain;
  */
 public class Snack {
 
-  private long id;
+  private Long id;
   private String snackName;
-  private double snackPrice;
-  private long snackStore;
+  private Double snackPrice;
+  private Long snackStore;
+  private String snackPicture;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
-
 
   public String getSnackName() {
     return snackName;
@@ -28,22 +28,27 @@ public class Snack {
     this.snackName = snackName;
   }
 
-
-  public double getSnackPrice() {
+  public Double getSnackPrice() {
     return snackPrice;
   }
 
-  public void setSnackPrice(double snackPrice) {
+  public void setSnackPrice(Double snackPrice) {
     this.snackPrice = snackPrice;
   }
 
-
-  public long getSnackStore() {
+  public Long getSnackStore() {
     return snackStore;
   }
 
-  public void setSnackStore(long snackStore) {
+  public void setSnackStore(Long snackStore) {
     this.snackStore = snackStore;
   }
 
+  public String getSnackPicture() {
+    return snackPicture;
+  }
+
+  public void setSnackPicture(String snackPicture) {
+    this.snackPicture = snackPicture;
+  }
 }
