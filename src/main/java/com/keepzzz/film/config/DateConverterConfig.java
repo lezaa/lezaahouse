@@ -12,7 +12,6 @@ import java.util.List;
 @Component
 public class DateConverterConfig implements Converter<String, Date> {
 
-
     private static final List<String> formarts = new ArrayList(4);
     static{
         formarts.add("yyyy-MM");

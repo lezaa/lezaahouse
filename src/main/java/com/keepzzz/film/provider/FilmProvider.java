@@ -50,7 +50,6 @@ public class FilmProvider {
     }
 
 
-
     public String updateFilm(final Film film){
         return new SQL(){{
             UPDATE("film");

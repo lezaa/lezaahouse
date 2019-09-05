@@ -18,7 +18,6 @@ import java.util.Map;
 @RequestMapping("/api/v1/pub")
 public class PublicController {
 
-
     @Autowired
     private FilmService filmService;
 

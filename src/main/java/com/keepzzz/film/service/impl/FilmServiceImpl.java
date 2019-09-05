@@ -14,7 +14,6 @@ public class FilmServiceImpl implements FilmService {
     @Autowired
     private FilmMapper filmMapper;
 
-
     @Override
     public List<Film> getAllFilms() {
         return filmMapper.getAll();
