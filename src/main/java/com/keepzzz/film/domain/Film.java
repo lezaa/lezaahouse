@@ -34,6 +34,7 @@ public class Film {
    * 电影状态 1:正在上映  0:下架  2:即将上映
    */
   private Long statu;
+  private double score;
 
   public Long getId() {
     return id;
@@ -137,5 +138,13 @@ public class Film {
 
   public void setStatu(Long statu) {
     this.statu = statu;
+  }
+
+  public double getScore() {
+    return score;
+  }
+
+  public void setScore(double score) {
+    this.score = score;
   }
 }

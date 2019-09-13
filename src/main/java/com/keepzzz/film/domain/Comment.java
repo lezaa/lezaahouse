@@ -13,6 +13,7 @@ public class Comment {
   private Long filmId;
   private Date createTime;
   private String comments;
+  private Integer score;
 
 
   public Long getId() {
@@ -53,5 +54,13 @@ public class Comment {
 
   public void setComments(String comments) {
     this.comments = comments;
+  }
+
+  public Integer getScore() {
+    return score;
+  }
+
+  public void setScore(Integer score) {
+    this.score = score;
   }
 }

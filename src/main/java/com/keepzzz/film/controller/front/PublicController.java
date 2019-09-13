@@ -22,7 +22,13 @@ public class PublicController {
     private FilmService filmService;
 
 
-    @RequestMapping("/index")
+    /**
+     * 电影列表接口
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping("/films")
     public ApiResponse FilmList(@RequestParam(value = "page",defaultValue = "1") int page,
                                 @RequestParam(value = "size",defaultValue = "8") int size){
         PageHelper.startPage(page,size);
@@ -36,6 +42,8 @@ public class PublicController {
         data.put("data",pageInfo.getList());
         return ApiResponse.ofSuccess(data);
     }
+
+
 
 
 }

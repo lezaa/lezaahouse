@@ -18,4 +18,23 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> getAllFilms() {
         return filmMapper.getAll();
     }
+
+    @Override
+    public boolean addFilm(Film film) {
+
+     return filmMapper.insert(film) > 0;
+
+    }
+
+    @Override
+    public Film getFilmInfo(long filmId) {
+      return filmMapper.getFilmById(filmId);
+    }
+
+    @Override
+    public List<Film> stateFilm(long state) {
+        return filmMapper.getFilmsByState(state);
+    }
+
+
 }

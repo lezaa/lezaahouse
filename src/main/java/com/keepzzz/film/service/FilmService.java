@@ -8,4 +8,10 @@ public interface FilmService {
 
     List<Film> getAllFilms();
 
+    boolean addFilm(Film film);
+
+    Film getFilmInfo(long FilmId);
+
+    List<Film> stateFilm(long state);
+
 }

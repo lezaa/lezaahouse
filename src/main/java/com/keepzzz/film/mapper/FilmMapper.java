@@ -13,6 +13,13 @@ public interface FilmMapper {
     List<Film> getAll();
 
 
+    @Select("select * from film where id = #{filmId}")
+    Film getFilmById(long filmId);
+
+
+    @Select("select * from film where statu = #{state}")
+    List<Film> getFilmsByState(long state);
+
     /**
      * 更新电影
      * @param film
