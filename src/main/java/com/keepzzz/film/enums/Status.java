@@ -7,8 +7,8 @@ public enum Status {
     INTERNAL_SERVER_ERROR(500,"服务器错误"),
     NOT_VALID_PARAM(40005,"参数验证错误"),
     Not_SUPPORTED_OPERATION(40006,"不被支持的操作"),
-    NOT_LOGIN(50000,"未登录");
-
+    NOT_LOGIN(50000,"未登录"),
+    ACCOUNT_ERROR(60000,"账号或者密码错误");
     private int code;
     private String standardMessage;
 
