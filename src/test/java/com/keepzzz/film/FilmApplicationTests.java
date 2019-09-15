@@ -1,7 +1,12 @@
 package com.keepzzz.film;
 
+import com.keepzzz.film.domain.Area;
 import com.keepzzz.film.domain.Film;
+import com.keepzzz.film.domain.User;
+import com.keepzzz.film.mapper.AreaMapper;
 import com.keepzzz.film.mapper.FilmMapper;
+import com.keepzzz.film.mapper.UserMapper;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +22,12 @@ public class FilmApplicationTests {
 
     @Autowired
     private FilmMapper filmMapper;
+
+    @Autowired
+    private AreaMapper areaMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     public void contextLoads() {
@@ -65,5 +76,19 @@ public class FilmApplicationTests {
     @Test
     public void testdelete(){
         filmMapper.delete(9);
+    }
+
+    @Test
+    public void testselect(){
+        List<Area> areas = areaMapper.getAreas();
+        for(Area area : areas){
+            System.out.println(area.getZone());
+        }
+    }
+
+    @Test
+    public void testSelectUser(){
+        User user = userMapper.getUserByUsername("feng");
+        System.out.println(user.getUsername());
     }
 }

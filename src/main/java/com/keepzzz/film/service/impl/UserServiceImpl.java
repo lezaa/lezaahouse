@@ -1,28 +1,37 @@
 package com.keepzzz.film.service.impl;
 
+import com.keepzzz.film.base.Cproperty;
 import com.keepzzz.film.domain.User;
 import com.keepzzz.film.mapper.UserMapper;
 import com.keepzzz.film.service.UserService;
+import com.keepzzz.film.utils.IdCardUtil;
+import com.keepzzz.film.utils.MD5Util;
+import com.keepzzz.film.vo.RegisterVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+    private static Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserMapper userMapper;
 
     @Override
     public boolean login(String username,String password) {
-
+        log.info("api:login`user_name={}`",username);
         //todo 密码加密
         User user = userMapper.getUserByUsername(username);
         if(user != null){
-                if(password.equals(user.getPassword())){
+                String pwd = MD5Util.inputPassToDBPass(password, Cproperty.salt);
+                if(pwd.equals(user.getPassword())){
                     return true;
                 }else {
+                    log.error("用户id:{},密码错误!",user.getUsername());
                     return false;
                 }
         }
@@ -30,7 +39,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean register(User user) {
+    public boolean register(RegisterVO registerVO) {
+        User user = new User();
+        BeanUtils.copyProperties(registerVO,user);
+        String pwd = MD5Util.inputPassToDBPass(user.getPassword(),Cproperty.salt);
+        user.setPassword(pwd);
+        IdCardUtil.validateIdCard(user.getIdCard());
+        //用户名唯一
+        String username = user.getUsername();
+        if( userMapper.getUserByUsername(username) == null){
+            log.info("api:regist`user_id={}",user.getUsername());
+            return userMapper.addUser(user) > 0;
+        }
         return false;
     }
 }
