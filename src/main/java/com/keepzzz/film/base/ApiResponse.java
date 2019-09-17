@@ -2,6 +2,9 @@ package com.keepzzz.film.base;
 
 import com.keepzzz.film.enums.Status;
 
+/**
+ * 接口同一返回格式
+ */
 public class ApiResponse {
 
     private int code;
