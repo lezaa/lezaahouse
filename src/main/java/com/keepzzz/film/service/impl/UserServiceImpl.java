@@ -1,10 +1,13 @@
 package com.keepzzz.film.service.impl;
 
+
 import com.keepzzz.film.base.Cproperty;
 import com.keepzzz.film.domain.User;
 import com.keepzzz.film.mapper.UserMapper;
+import com.keepzzz.film.service.RedisService;
 import com.keepzzz.film.service.UserService;
 import com.keepzzz.film.utils.IdCardUtil;
+import com.keepzzz.film.utils.JwtUtil;
 import com.keepzzz.film.utils.MD5Util;
 import com.keepzzz.film.vo.RegisterVO;
 import org.slf4j.Logger;
@@ -13,13 +16,22 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class UserServiceImpl implements UserService {
 
     private static Logger log = LoggerFactory.getLogger(UserService.class);
 
+    private static final long EXPIRE_TIME = 120;
+
+    private static final String PREFIX_USER = "user:";
+
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RedisService redisService;
 
     @Override
     public boolean login(String username,String password) {
@@ -29,6 +41,9 @@ public class UserServiceImpl implements UserService {
         if(user != null){
                 String pwd = MD5Util.inputPassToDBPass(password, Cproperty.salt);
                 if(pwd.equals(user.getPassword())){
+                    String token = JwtUtil.geneJsonWebToken(user);
+                    System.out.println("======"+token+"=====");
+                    redisService.set(PREFIX_USER+user.getId().toString(),token,EXPIRE_TIME);
                     return true;
                 }else {
                     log.error("用户id:{},密码错误!",user.getUsername());

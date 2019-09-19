@@ -56,7 +56,12 @@ public class UserController {
         return ApiResponse.ofStatus(Status.Not_SUPPORTED_OPERATION);
     }
 
-    @PostMapping("/")
+    /**
+     * 修改用户信息
+     * <p>用户修改头像,性别,电话,头像</p>
+     * @return
+     */
+    @PostMapping("/info")
     public ApiResponse updateUserInfo(){
         return null;
     }

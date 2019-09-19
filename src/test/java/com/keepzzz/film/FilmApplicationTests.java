@@ -6,6 +6,8 @@ import com.keepzzz.film.domain.User;
 import com.keepzzz.film.mapper.AreaMapper;
 import com.keepzzz.film.mapper.FilmMapper;
 import com.keepzzz.film.mapper.UserMapper;
+import com.keepzzz.film.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -88,7 +90,21 @@ public class FilmApplicationTests {
 
     @Test
     public void testSelectUser(){
-        User user = userMapper.getUserByUsername("feng");
-        System.out.println(user.getUsername());
+
+    }
+
+    @Test
+    public void testCheck(){
+
+        String token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWVwenp6IiwiaWQiOjEsInVzZXJuYW1lIjoiZmVuZyIsInBob25lIjoiMTUwODAwMzQyMzEiLCJpYXQiOjE1Njg5MDE1ODUsImV4cCI6MTU2OTUwNjM4NX0.QCQR0FhEiwTeR8O0k0FByukwMYulMov5LgJ2pKlH6Io";
+        Claims claims= JwtUtil.checkJWT(token);
+        if(claims!=null){
+            String name=(String)claims.get("username");
+            long id=(Long)claims.get("id");
+            String phone=(String)claims.get("phone");
+            System.out.println(name);
+            System.out.println(id);
+            System.out.println(phone);
+        }
     }
 }
