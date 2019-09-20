@@ -70,5 +70,16 @@ public class FilmServiceImpl implements FilmService {
         return filmMapper.getFilmsByState(state);
     }
 
+    @Override
+    public List<Film> sortFilm(long sortId) {
+        return filmMapper.getFilmsBySort(sortId);
+
+    }
+
+    @Override
+    public List<Film> areaFilm(long areaId) {
+        return filmMapper.getFilmsByArea(areaId);
+    }
+
 
 }

@@ -20,6 +20,12 @@ public interface FilmMapper {
     @Select("select * from film where statu = #{state}")
     List<Film> getFilmsByState(long state);
 
+    @Select("select * from film where sort_id = #{sortId}")
+    List<Film> getFilmsBySort(long sortId);
+
+    @Select("select * from film where area_id = #{areaId}")
+    List<Film> getFilmsByArea(long areaId);
+
     /**
      * 更新电影
      * @param film

@@ -1,6 +1,5 @@
 package com.keepzzz.film.service;
 
-import com.keepzzz.film.domain.User;
 import com.keepzzz.film.dto.UserInfo;
 import com.keepzzz.film.vo.RegisterVO;
 

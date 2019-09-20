@@ -14,4 +14,8 @@ public interface FilmService {
 
     List<Film> stateFilm(long state);
 
+    List<Film> sortFilm(long sortId);
+
+    List<Film> areaFilm(long areaId);
+
 }
