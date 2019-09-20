@@ -147,4 +147,25 @@ public class Film {
   public void setScore(double score) {
     this.score = score;
   }
+
+
+  @Override
+  public String toString() {
+    return "Film{" +
+            "id=" + id +
+            ", sortId=" + sortId +
+            ", areaId=" + areaId +
+            ", filmName='" + filmName + '\'' +
+            ", filmTime=" + filmTime +
+            ", filmDirector='" + filmDirector + '\'' +
+            ", filmPlayers='" + filmPlayers + '\'' +
+            ", filmIntro='" + filmIntro + '\'' +
+            ", filmLanguage='" + filmLanguage + '\'' +
+            ", filmPrice=" + filmPrice +
+            ", playTime=" + playTime +
+            ", filmPhoto='" + filmPhoto + '\'' +
+            ", statu=" + statu +
+            ", score=" + score +
+            '}';
+  }
 }

@@ -18,6 +18,8 @@ public class FilmServiceImpl implements FilmService {
 
     private static final String ALL_FILMS = "allfilms";
 
+    private static final String FILM = "film:";
+
     @Autowired
     private FilmMapper filmMapper;
 
@@ -25,7 +27,10 @@ public class FilmServiceImpl implements FilmService {
     private RedisService redisService;
 
 
-
+    /**
+     * 从缓冲中获取数据
+     * @return
+     */
     @Override
     public List<Film> getAllFilms() {
         List<Film> films = (List<Film>) redisService.get(ALL_FILMS);
@@ -44,13 +49,19 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public boolean addFilm(Film film) {
-
-     return filmMapper.insert(film) > 0;
-
+        int flag = filmMapper.insert(film);
+        redisService.set(FILM+film.getId(),film);
+        return flag > 0;
     }
 
     @Override
     public Film getFilmInfo(long filmId) {
+      Film film = (Film) redisService.get(FILM+filmId);
+      if(film != null){
+          log.info("从缓存中获取电影信息");
+          return film;
+      }
+      log.info("从数据库中获取电影信息");
       return filmMapper.getFilmById(filmId);
     }
 
