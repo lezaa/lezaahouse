@@ -3,6 +3,8 @@ package com.keepzzz.film.service.impl;
 import com.keepzzz.film.domain.Comment;
 import com.keepzzz.film.mapper.CommentMapper;
 import com.keepzzz.film.service.CommentService;
+import com.keepzzz.film.vo.CommentVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,10 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
-    public boolean publishComment(Comment comment) {
+    public boolean publishComment(CommentVO commentVO) {
+        Comment comment = new Comment();
         comment.setCreateTime(new Date());
+        BeanUtils.copyProperties(commentVO,comment);
         return commentMapper.insert(comment) > 0;
     }
 

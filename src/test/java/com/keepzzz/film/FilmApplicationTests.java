@@ -96,11 +96,11 @@ public class FilmApplicationTests {
     @Test
     public void testCheck(){
 
-        String token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWVwenp6IiwiaWQiOjEsInVzZXJuYW1lIjoiZmVuZyIsInBob25lIjoiMTUwODAwMzQyMzEiLCJpYXQiOjE1Njg5MDE1ODUsImV4cCI6MTU2OTUwNjM4NX0.QCQR0FhEiwTeR8O0k0FByukwMYulMov5LgJ2pKlH6Io";
+        String token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWVwenp6IiwiaWQiOjEsInVzZXJuYW1lIjoiZmVuZyIsInBob25lIjoiMTUwODAwMzQyMzEiLCJpYXQiOjE1Njg5NDY5OTQsImV4cCI6MTU2OTU1MTc5NH0.YSLt6fwBt-UfIRABVviyIpmjl1xKgUIeNROeDdgboLQ";
         Claims claims= JwtUtil.checkJWT(token);
         if(claims!=null){
             String name=(String)claims.get("username");
-            long id=(Long)claims.get("id");
+            Integer id=(Integer)claims.get("id");
             String phone=(String)claims.get("phone");
             System.out.println(name);
             System.out.println(id);

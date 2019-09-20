@@ -30,8 +30,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private RedisService redisService;
+
 
     @Override
     public boolean login(String username,String password) {
@@ -43,7 +42,6 @@ public class UserServiceImpl implements UserService {
                 if(pwd.equals(user.getPassword())){
                     String token = JwtUtil.geneJsonWebToken(user);
                     System.out.println("======"+token+"=====");
-                    redisService.set(PREFIX_USER+user.getId().toString(),token,EXPIRE_TIME);
                     return true;
                 }else {
                     log.error("用户id:{},密码错误!",user.getUsername());

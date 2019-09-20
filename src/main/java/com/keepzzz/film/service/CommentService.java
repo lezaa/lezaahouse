@@ -1,13 +1,14 @@
 package com.keepzzz.film.service;
 
 import com.keepzzz.film.domain.Comment;
+import com.keepzzz.film.vo.CommentVO;
 
 import java.util.List;
 
 public interface CommentService {
 
 
-    boolean publishComment(Comment comment);
+    boolean publishComment(CommentVO commentVO);
 
     List<Comment> filmComments(long filmId);
 
