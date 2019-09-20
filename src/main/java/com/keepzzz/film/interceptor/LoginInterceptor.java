@@ -64,7 +64,5 @@ public class LoginInterceptor implements HandlerInterceptor {
         }finally {
             writer.close();
         }
-
-
     }
 }

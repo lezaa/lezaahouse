@@ -28,7 +28,6 @@ public class JwtUtil {
         || user.getPhone() == null){
             return null;
         }
-
         return Jwts.builder().setSubject(SUBJECT)
                 .claim("id",user.getId())
                 .claim("username",user.getUsername())
@@ -36,11 +35,9 @@ public class JwtUtil {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+EXPIRE))
                 .signWith(SignatureAlgorithm.HS256,APPSECRET).compact();
-
     }
 
     public static Claims checkJWT(String token){
-
         try{
            return Jwts.parser().setSigningKey(APPSECRET)
                     .parseClaimsJws(token)

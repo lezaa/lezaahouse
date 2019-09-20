@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.springframework.stereotype.Repository;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Repository
@@ -28,7 +29,11 @@ public interface CommentMapper {
      * @return
      */
     @Select("select * from comment where id = #{id}")
-    Comment getComment(long id);
+    List<Comment> getComment(long id);
+
+
+    @Select("select * from comment where film_id = #{filmId}")
+    List<Comment> getFilmComments(long filmId);
 
     /**
      * 添加评论

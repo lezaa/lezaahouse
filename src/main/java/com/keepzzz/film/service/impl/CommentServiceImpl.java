@@ -28,7 +28,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> filmComments(long filmId) {
-        return null;
+        List<Comment> comments = commentMapper.getFilmComments(filmId);
+        return comments;
     }
 
     @Override
