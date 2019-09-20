@@ -1,16 +1,17 @@
 package com.keepzzz.film.controller.front;
 
 import com.keepzzz.film.base.ApiResponse;
+import com.keepzzz.film.dto.UserInfo;
 import com.keepzzz.film.enums.Status;
 import com.keepzzz.film.service.UserService;
 import com.keepzzz.film.vo.LoginVO;
 import com.keepzzz.film.vo.RegisterVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.system.ApplicationPid;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -64,5 +65,14 @@ public class UserController {
     @PostMapping("/info")
     public ApiResponse updateUserInfo(){
         return null;
+    }
+
+    @GetMapping("/info/{id}")
+    public ApiResponse getUserInfo(@PathVariable("id") long id){
+        UserInfo user = userService.getUser(id);
+        if(user != null){
+            return ApiResponse.ofSuccess(user);
+        }
+        return ApiResponse.ofStatus(Status.THIS_USERINFO_NOT_EXITS);
     }
 }

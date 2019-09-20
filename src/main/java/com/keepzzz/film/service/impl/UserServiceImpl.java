@@ -3,6 +3,7 @@ package com.keepzzz.film.service.impl;
 
 import com.keepzzz.film.base.Cproperty;
 import com.keepzzz.film.domain.User;
+import com.keepzzz.film.dto.UserInfo;
 import com.keepzzz.film.mapper.UserMapper;
 import com.keepzzz.film.service.RedisService;
 import com.keepzzz.film.service.UserService;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
@@ -65,5 +67,17 @@ public class UserServiceImpl implements UserService {
             return userMapper.addUser(user) > 0;
         }
         return false;
+    }
+
+    @Override
+    public UserInfo getUser(long userId) {
+        User user = userMapper.getUser(userId);
+        if(user != null){
+            UserInfo userInfo = new UserInfo();
+            BeanUtils.copyProperties(user,userInfo);
+            return userInfo;
+        }
+        log.error("查询不到指定的用户信息");
+        return null;
     }
 }
