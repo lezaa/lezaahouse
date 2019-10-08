@@ -3,6 +3,8 @@ package com.keepzzz.film.provider;
 import com.keepzzz.film.domain.Film;
 import org.apache.ibatis.jdbc.SQL;
 
+import java.util.List;
+import java.util.Map;
 
 
 public class FilmProvider {
@@ -84,12 +86,36 @@ public class FilmProvider {
                 SET("film_price = #{filmPrice}");
             }
             if(film.getStatu() != null) {
-                SET("status = #{status} ");
+                SET("statu = #{statu} ");
             }
             if(film.getFilmLanguage() != null){
                 SET("film_language = #{filmLanguage}");
             }
             WHERE("id = #{id}");
         }}.toString();
+    }
+
+
+    public String batchDelete(Map map) {
+
+        List<Integer> ids = (List<Integer>) map.get("list");
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("DELETE FROM film WHERE id IN (");
+
+        for (int i = 0; i < ids.size(); i++) {
+
+            sb.append("'").append(ids.get(i)).append("'");
+
+            if (i < ids.size() - 1)
+
+                sb.append(",");
+
+        }
+
+        sb.append(")");
+
+        return sb.toString();
+
     }
 }

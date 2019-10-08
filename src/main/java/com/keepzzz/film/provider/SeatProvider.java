@@ -16,6 +16,9 @@ public class SeatProvider {
             if (seat.getNum()!= null) {
                 VALUES("num", "#{num}");
             }
+            if(seat.getState() != null){
+                VALUES("state", "#{state}");
+            }
         }}.toString();
     }
 
@@ -31,6 +34,9 @@ public class SeatProvider {
             }
             if (seat.getNum()!= null) {
                 SET("num = #{num}");
+            }
+            if(seat.getState()!= null){
+                SET("state = #{state}");
             }
             WHERE("id = #{id}");
         }}.toString();

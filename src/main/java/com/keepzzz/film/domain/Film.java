@@ -1,6 +1,8 @@
 package com.keepzzz.film.domain;
 
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -9,32 +11,45 @@ import java.util.Date;
 
 public class Film {
 
+  @NotNull
   private Long id;
   /**
    * 所在分类
    */
+  @NotNull
   private Long sortId;
   /**
    * 所在地区
    */
+  @NotNull
   private Long areaId;
+  @NotEmpty
   private String filmName;
+
   private Long filmTime;
+  @NotEmpty
   private String filmDirector;
+  @NotEmpty
   private String filmPlayers;
+  @NotEmpty
   private String filmIntro;
+  @NotEmpty
   private String filmLanguage;
+  @NotNull
   private Double filmPrice;
   /**
    * 上映时间
    */
   private Date playTime;
+  @NotEmpty
   private String filmPhoto;
   /**
    * 电影状态 1:正在上映  0:下架  2:即将上映
    */
+  @NotNull
   private Long statu;
-  private double score;
+  @NotNull
+  private Double score;
 
   public Long getId() {
     return id;

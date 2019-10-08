@@ -1,6 +1,7 @@
 package com.keepzzz.film.service.impl;
 
 import com.keepzzz.film.domain.Film;
+import com.keepzzz.film.dto.FilmDTO;
 import com.keepzzz.film.mapper.FilmMapper;
 import com.keepzzz.film.service.FilmService;
 import com.keepzzz.film.service.RedisService;
@@ -9,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -79,6 +82,23 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public List<Film> areaFilm(long areaId) {
         return filmMapper.getFilmsByArea(areaId);
+    }
+
+    @Override
+    public boolean updateFilm(Film film) {
+        return filmMapper.update(film) > 0;
+    }
+
+    @Override
+    public boolean deleteFilm(long filmId) {
+        return filmMapper.delete(filmId) > 0;
+
+    }
+
+    @Override
+    public boolean deleteBatchFIlms(Long[] ids) {
+        List<Long> fids = new ArrayList<>(Arrays.asList(ids));
+        return filmMapper.deleteBatch(fids) > 0;
     }
 
 

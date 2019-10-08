@@ -54,4 +54,6 @@ public interface FilmMapper {
     int delete(long id);
 
 
+    @DeleteProvider(type = FilmProvider.class,method = "batchDelete")
+    int deleteBatch(List<Long> ids);
 }

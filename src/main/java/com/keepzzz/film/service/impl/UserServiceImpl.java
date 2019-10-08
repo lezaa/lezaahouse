@@ -59,7 +59,11 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(registerVO,user);
         String pwd = MD5Util.inputPassToDBPass(user.getPassword(),Cproperty.salt);
         user.setPassword(pwd);
-        IdCardUtil.validateIdCard(user.getIdCard());
+        //设置默认头像
+        user.setUserPhoto("http://1.jpg");
+        //设置默认权限
+        user.setRole("user");
+       // boolean flag = IdCardUtil.validateIdCard(user.getIdCard());
         //用户名唯一
         String username = user.getUsername();
         if( userMapper.getUserByUsername(username) == null){
@@ -79,5 +83,15 @@ public class UserServiceImpl implements UserService {
         }
         log.error("查询不到指定的用户信息");
         return null;
+    }
+
+    @Override
+    public boolean editUserInfo(UserInfo userInfo) {
+        User user = userMapper.getUser(userInfo.getId());
+        if(null != user){
+            BeanUtils.copyProperties(userInfo,user);
+            return userMapper.updateUser(user) > 0;
+        }
+        return false;
     }
 }

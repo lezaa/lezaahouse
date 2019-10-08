@@ -3,6 +3,8 @@ package com.keepzzz.film.provider;
 import com.keepzzz.film.domain.Comment;
 import org.apache.ibatis.jdbc.SQL;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class CommentProvider {
@@ -51,4 +53,30 @@ public class CommentProvider {
         }}.toString();
 
     }
+
+
+    public String batchDelete(Map map) {
+
+        List<Integer> ids = (List<Integer>) map.get("list");
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("DELETE FROM comment WHERE id IN (");
+
+        for (int i = 0; i < ids.size(); i++) {
+
+            sb.append("'").append(ids.get(i)).append("'");
+
+            if (i < ids.size() - 1)
+
+                sb.append(",");
+
+        }
+
+        sb.append(")");
+
+        return sb.toString();
+
+    }
+
+
 }

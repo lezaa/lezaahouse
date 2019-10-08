@@ -2,14 +2,11 @@ package com.keepzzz.film.mapper;
 
 import com.keepzzz.film.domain.Comment;
 import com.keepzzz.film.provider.CommentProvider;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
-import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface CommentMapper {
@@ -35,6 +32,12 @@ public interface CommentMapper {
     @Select("select * from comment where film_id = #{filmId}")
     List<Comment> getFilmComments(long filmId);
 
+    @Select("select * from comment where user_id = #{userId}")
+    List<Comment>  getCommentsByUserId(long userId);
+
+    @Select("select * from comment where user_id = #{userId} and film_id = #{filmId}")
+    Comment getCommentByFilmIdAndUserId(Map<String,Object> params);
+
     /**
      * 添加评论
      * @param comment
@@ -51,4 +54,9 @@ public interface CommentMapper {
     @UpdateProvider(type = CommentProvider.class,method = "updateComment")
     int update(Comment comment);
 
+    @Delete("delete from comment where id = #{id}")
+    int delete(long id);
+
+    @DeleteProvider(type = CommentProvider.class,method = "batchDelete")
+    int deleteBatch(List<Long> ids);
 }
