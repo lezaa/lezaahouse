@@ -12,9 +12,11 @@ public class Ticket {
   private Long filmId;
   private Long hallId;
   private Date createTime;
-  private String seatId;
+  private Long seatId;
   private Double ticketPrice;
   private Long orderId;
+  private Long userId;
+  private Seat seat;
 
   public Long getId() {
     return id;
@@ -48,11 +50,11 @@ public class Ticket {
     this.createTime = createTime;
   }
 
-  public String getSeatId() {
+  public Long getSeatId() {
     return seatId;
   }
 
-  public void setSeatId(String seatId) {
+  public void setSeatId(Long seatId) {
     this.seatId = seatId;
   }
 
@@ -70,5 +72,21 @@ public class Ticket {
 
   public void setOrderId(Long orderId) {
     this.orderId = orderId;
+  }
+
+  public Long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Long userId) {
+    this.userId = userId;
+  }
+
+  public Seat getSeat() {
+    return seat;
+  }
+
+  public void setSeat(Seat seat) {
+    this.seat = seat;
   }
 }

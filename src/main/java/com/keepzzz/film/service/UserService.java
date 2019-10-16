@@ -14,6 +14,4 @@ public interface UserService {
     //boolean updateInfo(User user);
 
     UserInfo getUser(long userId);
-
-    boolean editUserInfo(UserInfo userInfo);
 }

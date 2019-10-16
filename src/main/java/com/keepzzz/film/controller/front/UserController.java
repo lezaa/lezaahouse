@@ -8,11 +8,8 @@ import com.keepzzz.film.vo.LoginVO;
 import com.keepzzz.film.vo.RegisterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -28,7 +25,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/login")
-    public ApiResponse login(@Validated @RequestBody LoginVO loginVO, BindingResult bindingResult){
+    public ApiResponse login(@Validated LoginVO loginVO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return ApiResponse.ofStatus(Status.NOT_VALID_PARAM);
         }
@@ -47,12 +44,9 @@ public class UserController {
      * @return
      */
     @PostMapping("/register")
-    public ApiResponse register(@Validated @RequestBody RegisterVO registerVO,BindingResult bindingResult){
-        System.out.println(registerVO.getRealName());
+    public ApiResponse register(@Validated RegisterVO registerVO,BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getAllErrors().toString());
             return ApiResponse.ofStatus(Status.NOT_VALID_PARAM);
-
         }
         boolean flag = userService.register(registerVO);
         if(flag){
@@ -67,23 +61,11 @@ public class UserController {
      * @return
      */
     @PostMapping("/info")
-    public ApiResponse updateUserInfo(@Validated UserInfo userInfo,BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            return ApiResponse.ofStatus(Status.NOT_VALID_PARAM);
-        }
-        boolean flag = userService.editUserInfo(userInfo);
-        if(flag){
-            return ApiResponse.ofSuccess();
-        }
-        return ApiResponse.ofStatus(Status.BAD_REQUEST);
+    public ApiResponse updateUserInfo(){
+        return null;
     }
 
 
-    /**
-     * 获取用户个人信息
-     * @param id
-     * @return
-     */
     @GetMapping("/info/{id}")
     public ApiResponse getUserInfo(@PathVariable("id") long id){
         UserInfo user = userService.getUser(id);

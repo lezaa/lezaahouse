@@ -2,11 +2,10 @@ package com.keepzzz.film.controller.front;
 
 import com.keepzzz.film.base.ApiResponse;
 import com.keepzzz.film.domain.Comment;
-import com.keepzzz.film.dto.CommentDTO;
 import com.keepzzz.film.enums.Status;
 import com.keepzzz.film.service.CommentService;
 import com.keepzzz.film.vo.CommentVO;
-import org.springframework.beans.AbstractPropertyAccessor;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -39,7 +38,7 @@ public class CommentController {
         if(flag){
             return ApiResponse.ofSuccess();
         }
-        return ApiResponse.ofStatus(Status.THIS_USER_ALREADY_PUBLISH_COMMENT);
+        return ApiResponse.ofStatus(Status.BAD_REQUEST);
     }
 
 
@@ -50,7 +49,7 @@ public class CommentController {
      */
     @GetMapping("/info/{filmId}")
     public ApiResponse filmComments(@PathVariable("filmId") long filmId){
-        List<CommentDTO> comments = commentService.filmComments(filmId);
+        List<Comment> comments = commentService.filmComments(filmId);
         if(comments != null){
             return ApiResponse.ofSuccess(comments);
         }
@@ -59,17 +58,34 @@ public class CommentController {
 
 
     /**
-     * 获取某个用户的所有评论
-     * @param id
+     * 获取用户的评论
+     * @param userId
      * @return
      */
-    @GetMapping("/list/{id}")
-    public ApiResponse commentsOfUser(@PathVariable("id") long id){
-        List<CommentDTO> commentDTOS = commentService.userComments(id);
-        if(commentDTOS != null){
-            return ApiResponse.ofSuccess(commentDTOS);
+    @GetMapping("/user/{userId}")
+    public ApiResponse userComments(@PathVariable("userId") long userId){
+        List<Comment> comments = commentService.userComments(userId);
+        if(comments != null){
+            return ApiResponse.ofSuccess(comments);
         }
         return ApiResponse.ofStatus(Status.BAD_REQUEST);
     }
+
+
+
+    /**
+     * 批量删除
+     * @param ids
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public ApiResponse deleteComments(@PathVariable("id") Long[] ids){
+        boolean flag = commentService.deleteBatch(ids);
+        if(flag){
+            return ApiResponse.ofSuccess();
+        }
+        return ApiResponse.ofStatus(Status.BAD_REQUEST);
+    }
+
 
 }

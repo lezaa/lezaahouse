@@ -1,7 +1,6 @@
 package com.keepzzz.film.service;
 
 import com.keepzzz.film.domain.Film;
-import com.keepzzz.film.dto.FilmDTO;
 
 import java.util.List;
 
@@ -18,11 +17,5 @@ public interface FilmService {
     List<Film> sortFilm(long sortId);
 
     List<Film> areaFilm(long areaId);
-
-    boolean updateFilm(Film film);
-
-    boolean deleteFilm(long filmId);
-
-    boolean deleteBatchFIlms(Long[] ids);
 
 }

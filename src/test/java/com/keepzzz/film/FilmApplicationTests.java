@@ -1,21 +1,27 @@
 package com.keepzzz.film;
 
 import com.keepzzz.film.domain.Area;
+import com.keepzzz.film.domain.Comment;
 import com.keepzzz.film.domain.Film;
-import com.keepzzz.film.domain.User;
+import com.keepzzz.film.domain.Ticket;
 import com.keepzzz.film.mapper.AreaMapper;
 import com.keepzzz.film.mapper.FilmMapper;
+import com.keepzzz.film.mapper.TicketMapper;
 import com.keepzzz.film.mapper.UserMapper;
+import com.keepzzz.film.service.CommentService;
 import com.keepzzz.film.service.FilmService;
+import com.keepzzz.film.service.TicketService;
 import com.keepzzz.film.utils.JwtUtil;
+import com.keepzzz.film.vo.CommentVO;
+import com.keepzzz.film.vo.TicketVO;
 import io.jsonwebtoken.Claims;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sound.midi.Soundbank;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +40,16 @@ public class FilmApplicationTests {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    private TicketService ticketService;
+
+    @Autowired
+    private TicketMapper ticketMapper;
+
+    @Autowired
+    private CommentService commentService;
+
 
     @Test
     public void contextLoads() {
@@ -138,5 +154,45 @@ public class FilmApplicationTests {
     public void getFilm(){
         Film filmInfo = filmService.getFilmInfo(11);
         System.out.println(filmInfo.toString());
+    }
+
+    @Test
+    public void testTicket(){
+        List<TicketVO> tickets1 = ticketService.getTickets();
+
+        System.out.println(tickets1.toString());
+
+
+    }
+
+    @Test
+    public void testTicket1(){
+        Ticket ticket = new Ticket();
+        ticket.setFilmId(5l);
+        ticket.setHallId(1l);
+        ticket.setCreateTime(new Date());
+        ticket.setSeatId(3l);
+        ticket.setTicketPrice(56.6);
+        ticket.setOrderId(1l);
+        ticket.setUserId(8l);
+        ticketService.addTicket(ticket);
+    }
+
+
+    @Test
+    public void testComment(){
+        CommentVO commentVO = new CommentVO();
+        commentVO.setUserId(2l);
+        commentVO.setFilmId(6l);
+        commentVO.setComments("66666666给力好看奥利给");
+        commentVO.setScore(5);
+        commentService.publishComment(commentVO);
+
+    }
+
+    @Test
+    public void testCommentDel(){
+        Long[] ids = {1l};
+        commentService.deleteBatch(ids);
     }
 }

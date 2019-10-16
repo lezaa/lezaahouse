@@ -7,7 +7,7 @@ public class Book {
 
   private Long id;
   private Long filmId;
-  private Long filmCount;
+  private Long fileCount;
   private Double totalPrice;
 
 
@@ -27,12 +27,12 @@ public class Book {
     this.filmId = filmId;
   }
 
-  public Long getFilmCount() {
-    return filmCount;
+  public Long getFileCount() {
+    return fileCount;
   }
 
-  public void setFilmCount(Long filmCount) {
-    this.filmCount = filmCount;
+  public void setFileCount(Long fileCount) {
+    this.fileCount = fileCount;
   }
 
   public Double getTotalPrice() {

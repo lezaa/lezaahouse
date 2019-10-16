@@ -5,7 +5,6 @@ import com.keepzzz.film.provider.UserProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.UpdateProvider;
 
 public interface UserMapper {
 
@@ -21,7 +20,4 @@ public interface UserMapper {
 
     @Select("select * from user where username = #{username}")
     User getUserByUsername( String username);
-
-    @UpdateProvider(type = UserProvider.class,method = "updateUser")
-    int updateUser(User user);
 }

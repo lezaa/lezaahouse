@@ -6,9 +6,11 @@ import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface SnackMapper {
     /**
      * 查询所有零食

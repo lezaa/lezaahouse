@@ -26,6 +26,9 @@ public class TicketProvider {
             if (ticket.getOrderId() != null) {
                 VALUES("order_id", "#{orderId}");
             }
+            if (ticket.getUserId() != null) {
+                VALUES("user_id", "#{userId}");
+            }
 
         }}.toString();
     }
@@ -50,6 +53,9 @@ public class TicketProvider {
                 }
                 if (ticket.getOrderId() != null) {
                     SET("order_id = #{orderId}");
+                }
+                if (ticket.getUserId() != null) {
+                    SET("user_id = #{userId}");
                 }
                 WHERE("id = #{id}");
             }}.toString();

@@ -9,7 +9,6 @@ public class Seat {
   private Long hallId;
   private Long row;
   private Long num;
-  private String state;
 
 
   public Long getId() {
@@ -44,11 +43,13 @@ public class Seat {
     this.num = num;
   }
 
-  public String getState() {
-    return state;
-  }
-
-  public void setState(String state) {
-    this.state = state;
+  @Override
+  public String toString() {
+    return "Seat{" +
+            "id=" + id +
+            ", hallId=" + hallId +
+            ", row=" + row +
+            ", num=" + num +
+            '}';
   }
 }

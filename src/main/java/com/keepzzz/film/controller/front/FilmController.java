@@ -5,11 +5,9 @@ import com.github.pagehelper.PageInfo;
 import com.keepzzz.film.base.ApiResponse;
 import com.keepzzz.film.domain.Film;
 import com.keepzzz.film.dto.FilmDTO;
-import com.keepzzz.film.enums.Status;
 import com.keepzzz.film.service.AreaService;
 import com.keepzzz.film.service.FilmService;
 import com.keepzzz.film.service.SortService;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +41,7 @@ public class FilmController {
      * @return
      */
     @RequestMapping("/films")
-    public ApiResponse filmList(@RequestParam(value = "page",defaultValue = "1") int page,
+    public ApiResponse FilmList(@RequestParam(value = "page",defaultValue = "1") int page,
                                 @RequestParam(value = "size",defaultValue = "8") int size){
 
         List<Film> allFilms = filmService.getAllFilms();
@@ -59,7 +57,7 @@ public class FilmController {
      * @return
      */
     @GetMapping("/{id}")
-    public ApiResponse filmInfo(@PathVariable("id") long filmId){
+    public ApiResponse FilmInfo(@PathVariable("id") long filmId){
 
         Film film = filmService.getFilmInfo(filmId);
         FilmDTO filmDTO = new FilmDTO();
@@ -80,7 +78,7 @@ public class FilmController {
      * @return
      */
     @GetMapping("/state/{state}")
-    public ApiResponse filmState(@PathVariable("state") long state){
+    public ApiResponse FilmsState(@PathVariable("state") long state){
         List<Film> films = filmService.stateFilm(state);
         if(films != null){
             List<FilmDTO> filmDTOS = changeFilmDto(films);
@@ -96,32 +94,14 @@ public class FilmController {
      * @return
      */
     @GetMapping("/sort/{id}")
-    public ApiResponse sortFilms(@PathVariable("id") long sortId){
+    public ApiResponse SortFilms(@PathVariable("id") long sortId){
         List<Film> films = filmService.sortFilm(sortId);
         if(films != null){
             List<FilmDTO> filmDTOS = changeFilmDto(films);
             Map<String, Object> page = page(1, 8, filmDTOS);
             return ApiResponse.ofSuccess(page);
         }
-        return ApiResponse.ofStatus(Status.BAD_REQUEST);
-    }
-
-
-    /**
-     * 按照区域获取电影列表
-     * @param areaId
-     * @return
-     */
-    @GetMapping("/area/{id}")
-    public ApiResponse areaFilms(@PathVariable("id") long areaId){
-
-        List<Film> films = filmService.areaFilm(areaId);
-        if(films != null){
-            List<FilmDTO> filmDTOS = changeFilmDto(films);
-            Map<String, Object> page = page(1, 8, filmDTOS);
-            return ApiResponse.ofSuccess(page);
-        }
-        return ApiResponse.ofStatus(Status.BAD_REQUEST);
+        return ApiResponse.ofStatus(NOT_VALID_PARAM);
     }
 
 
@@ -137,11 +117,9 @@ public class FilmController {
         return data;
     }
 
-
     private  List<FilmDTO> changeFilmDto(List<Film> films){
         List<FilmDTO> filmDTOS = films.stream().map(e -> new FilmDTO(
-                sortService.SortInfo(e.getSortId()).getSortName(),
-                areaService.getArea(e.getAreaId()).getZone(),
+                sortService.SortInfo(e.getSortId()).getSortName(),areaService.getArea(e.getAreaId()).getZone(),
                 e.getFilmName(),e.getFilmTime(),e.getFilmDirector(),e.getFilmPlayers(),e.getFilmIntro(),
                 e.getFilmLanguage(),e.getPlayTime(),e.getFilmPhoto(),e.getScore()
         )).collect(Collectors.toList());

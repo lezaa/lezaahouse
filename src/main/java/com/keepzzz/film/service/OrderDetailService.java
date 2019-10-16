@@ -1,4 +1,4 @@
-package com.keepzzz.film.mapper;
+package com.keepzzz.film.service;
 
 import com.keepzzz.film.domain.OrderDetail;
 import com.keepzzz.film.provider.OrderDetailProvider;
@@ -6,17 +6,17 @@ import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
-import org.springframework.stereotype.Repository;
+import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
-@Repository
-public interface OrderDetailMapper {
+public interface OrderDetailService {
+
+
     /**
      * 查询所有订单详情
      * @return
      */
-    @Select("select * from order_detail")
     List<OrderDetail> getOrderDetails();
 
     /**
@@ -24,7 +24,7 @@ public interface OrderDetailMapper {
      * @param id
      * @return
      */
-    @Select("select * from order_detail where id = #{id}")
+
     OrderDetail getOrderDetail(long id);
 
     /**
@@ -32,7 +32,6 @@ public interface OrderDetailMapper {
      * @param orderId
      * @return
      */
-    @Select("select * from order_detail where order_id = #{orderId}")
     OrderDetail getOrderDetailByOrderId(long orderId);
 
     /**
@@ -40,15 +39,14 @@ public interface OrderDetailMapper {
      * @param orderDetail
      * @return
      */
-    @InsertProvider(type = OrderDetailProvider.class,method = "insertOrderDetail")
-    @Options(useGeneratedKeys = true,keyColumn = "id",keyProperty = "id")
-    int insert(OrderDetail orderDetail);
+
+    boolean insert(OrderDetail orderDetail);
 
     /**
      * 修改订单详情
      * @param orderDetail
      * @return
      */
-    @UpdateProvider(type = OrderDetailProvider.class,method = "updateOrderDetail")
-    int update(OrderDetail orderDetail);
+
+    boolean update(OrderDetail orderDetail);
 }

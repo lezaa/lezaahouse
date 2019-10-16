@@ -34,37 +34,4 @@ public class UserProvider {
             }
         }}.toString();
     }
-
-    public String updateUser(final User user){
-        return new SQL(){{
-            UPDATE("user");
-            if(user.getId() != null){
-                SET("id = #{id}");
-            }
-            if(user.getIdCard() != null){
-                SET("id_card = #{idCard}");
-            }
-            if(user.getUsername() != null){
-                SET("username = #{username}");
-            }
-            if(user.getPassword() != null){
-                SET("password = #{password}");
-            }
-            if(user.getPhone() != null){
-                SET("phone = #{phone}");
-            }
-            if(user.getUserPhoto() != null){
-                SET("user_photo = #{userPhoto}");
-            }
-            if(user.getRealName() != null){
-                SET("real_name = #{realName}");
-            }
-            if(user.getSex() != null){
-                SET("sex = #{sex}");
-            }
-            if(user.getRole() != null){
-                SET("role = #{role}");
-            }
-        }}.toString();
-    }
 }

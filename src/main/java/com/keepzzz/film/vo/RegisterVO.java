@@ -2,7 +2,6 @@ package com.keepzzz.film.vo;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
 public class RegisterVO extends LoginVO{
@@ -14,8 +13,6 @@ public class RegisterVO extends LoginVO{
     @Length(min = 18,max = 18)
     private String idCard;
     private String sex;
-    @NotEmpty(message = "手机号码不能为空")
-    @Length(min = 11,max = 11)
     private String phone;
     private String role;
     private String userPhoto;

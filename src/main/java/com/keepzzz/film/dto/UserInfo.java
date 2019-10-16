@@ -2,7 +2,7 @@ package com.keepzzz.film.dto;
 
 public class UserInfo {
 
-    private Long id;
+
     private String username;
     private String realName;
     private String idCard;
@@ -10,13 +10,6 @@ public class UserInfo {
     private String phone;
     private String userPhoto;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

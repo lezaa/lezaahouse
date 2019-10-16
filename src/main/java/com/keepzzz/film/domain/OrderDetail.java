@@ -8,7 +8,7 @@ public class OrderDetail {
   private Long id;
   private Long orderId;
   private Double filmId;
-  private Double snackId;
+  private Long snackId;
   private Long seatId;
   private Long filmCount;
   private Long snackNum;
@@ -38,11 +38,11 @@ public class OrderDetail {
     this.filmId = filmId;
   }
 
-  public Double getSnackId() {
+  public Long getSnackId() {
     return snackId;
   }
 
-  public void setSnackId(Double snackId) {
+  public void setSnackId(Long snackId) {
     this.snackId = snackId;
   }
 
